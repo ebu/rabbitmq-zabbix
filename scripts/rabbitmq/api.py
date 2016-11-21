@@ -145,6 +145,8 @@ class RabbitMQAPI(object):
           return self.call_api('overview').get('message_stats', {}).get('publish',0)
         elif item == 'rabbitmq_version':
           return self.call_api('overview').get('rabbitmq_version', 'None')
+        elif item == 'message_total':
+          return self.call_api('overview').get('queue_totals', {}).get('messages', 0)
         '''Return the value for a specific item in a node's details.'''
         node_name = node_name.split('.')[0]
         for nodeData in self.call_api('nodes'):
